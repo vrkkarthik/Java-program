@@ -1,0 +1,38 @@
+#Author: your.email@your.domain.com
+#Keywords Summary :
+#Feature: List of scenarios.
+#Scenario: Business rule through list of steps with arguments.
+#Given: Some precondition step
+#When: Some key actions
+#Then: To observe outcomes or validation
+#And,But: To enumerate more Given,When,Then steps
+#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
+#Examples: Container for s table
+#Background: List of steps run before each of the scenarios
+#""" (Doc Strings)
+#| (Data Tables)
+#@ (Tags/Labels):To group Scenarios
+#<> (placeholder)
+#""
+## (Comments)
+#Sample Feature Definition Template
+@Facebook
+Feature: login Facebook Aplication
+  I want to Login FB
+   
+     
+   @Login
+    Scenario Outline: login Application
+    Given I want to launch facebook 
+   Then I want yo Open Facebookurl
+    When I want to enter "<username>""<password>" 
+    And verify the page launched Successfully
+
+    Examples: 
+      | username            | password | 
+      | sujatha@gmail.com   | admin1234| 
+      | sastika@gmail.com   | admin1234|
+      | kanagaraj@gmail.com   | admin1234| 
+      | parameswari@gmail.com   | admin1234| 
+
+  
