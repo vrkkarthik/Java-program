@@ -1,0 +1,52 @@
+package praticework;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class Dataorovider {
+	public static WebDriver driver;
+
+	public void beforeclass() {
+		System.setProperty("webdriver.chrome.driver",
+				"\\src\\msedgedriver.exe");
+		driver = new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://adactinhotelapp.com/");
+
+	}
+
+	@Test(dataProvider = "LoginData")
+	public void test1(String s1,String s2)throws InterruptedException 
+	{
+		String url = driver.getCurrentUrl();
+		System.out.println(url);
+		String title = driver.getTitle();
+		System.out.println(title);
+		WebElement user = driver.findElement(By.xpath("//input[@id='username']"));
+		user.sendKeys("karthik@gmail.com");
+		
+		WebElement pass = driver.findElement(By.xpath("//input[@id='password']"));
+		pass.sendKeys("admin@1234");
+		
+		driver.close();
+	}
+	
+       @DataProvider(name="LoginData")
+       public String[][] getData() {
+    	   String[][] data = new String[2][2];
+			data[0][0]="Angel";
+			data[0][1]="admin123";
+			
+			data[0][0]="christofer";
+			data[0][1]="ADmin@123";
+
+			data[0][0]="Mathew";
+			data[0][1]="AdmiN@123";
+			return data;
+				
+			}
+	}
